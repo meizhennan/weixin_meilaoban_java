@@ -15,10 +15,11 @@ import java.util.Scanner;
 public class WeixinUtils {
     public static Map<String,Object> uploadFile( String type) throws Exception {
 
-        ClassPathResource classPathResource = new ClassPathResource("static/income_from_operation.png");
+//        ClassPathResource classPathResource = new ClassPathResource("src/main/resource/static/income_from_operation.png");
+//
+//        File file = classPathResource.getFile();
 
-        File file = classPathResource.getFile();
-
+        File file = new File("src/main/resource/static/income_from_operation.png");
 
         // 指定上传的 URL
         URL url = new URL("http://api.weixin.qq.com/cgi-bin/media/upload?type=" + type);
