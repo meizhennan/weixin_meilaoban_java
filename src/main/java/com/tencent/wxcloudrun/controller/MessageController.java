@@ -29,8 +29,8 @@ public class MessageController {
     Map<String,Object> autoReply(@RequestBody MessageRequest request){
         logger.info("/api/autoReply post request, request: {}",request.toString());
         Map<String, Object> replyMessage = new HashMap();
-        replyMessage.put("ToUserName",request.getToUserName());
-        replyMessage.put("FromUserName",request.getFromUserName());
+        replyMessage.put("ToUserName",request.getFromUserName());
+        replyMessage.put("FromUserName",request.getToUserName());
         replyMessage.put("CreateTime",System.currentTimeMillis()/1000);
         replyMessage.put("MsgType","text");
         replyMessage.put("Content","测试自动回复");
