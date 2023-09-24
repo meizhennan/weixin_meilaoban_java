@@ -32,8 +32,12 @@ public class MessageController {
     Map<String,Object> autoReply(@RequestBody MessageRequest request) throws Exception {
         logger.info("/api/autoReply post request, request: {}",request.toString());
 
+        String path = this.getClass().getClassLoader().getResource("").getPath();
 
-        Map<String,Object> uploadResult = WeixinUtils.uploadFile("image");
+        logger.info("path："+path);
+
+
+        Map<String,Object> uploadResult = WeixinUtils.uploadFile(path+"/static/income_from_operation.png","image");
         logger.info("uploadResult"+uploadResult.get("responseCode"));
         logger.info("uploadResult"+uploadResult.get("responseBody"));
 

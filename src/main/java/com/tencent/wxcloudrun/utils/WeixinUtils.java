@@ -13,13 +13,14 @@ import java.util.Map;
 import java.util.Scanner;
 
 public class WeixinUtils {
-    public static Map<String,Object> uploadFile( String type) throws Exception {
+    public static Map<String,Object> uploadFile(String filePath, String type) throws Exception {
 
 //        ClassPathResource classPathResource = new ClassPathResource("src/main/resource/static/income_from_operation.png");
 //
 //        File file = classPathResource.getFile();
 
-        File file = new File("src/main/resource/static/income_from_operation.png");
+
+        File file = new File(filePath);
 
         // 指定上传的 URL
         URL url = new URL("http://api.weixin.qq.com/cgi-bin/media/upload?type=" + type);
