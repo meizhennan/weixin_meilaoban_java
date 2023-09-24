@@ -26,7 +26,7 @@ public class MessageController {
     }
 
     @PostMapping(value = "/api/autoReply")
-    ApiResponse autoReply(@RequestBody MessageRequest request){
+    Map<String,Object> autoReply(@RequestBody MessageRequest request){
         logger.info("/api/autoReply post request, request: {}",request.toString());
         Map<String, Object> replyMessage = new HashMap();
         replyMessage.put("ToUserName",request.getToUserName());
@@ -35,7 +35,7 @@ public class MessageController {
         replyMessage.put("MsgType","text");
         replyMessage.put("Content","测试自动回复");
 
-        return ApiResponse.ok(replyMessage);
+        return replyMessage;
     }
 
 }
