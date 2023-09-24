@@ -3,14 +3,17 @@ package com.tencent.wxcloudrun.controller;
 import com.tencent.wxcloudrun.config.ApiResponse;
 import com.tencent.wxcloudrun.dto.MessageRequest;
 import com.tencent.wxcloudrun.service.MessageService;
+import com.tencent.wxcloudrun.utils.WeixinUtils;
 import lombok.extern.java.Log;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.util.ResourceUtils;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.io.File;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
@@ -26,8 +29,14 @@ public class MessageController {
     }
 
     @PostMapping(value = "/api/autoReply")
-    Map<String,Object> autoReply(@RequestBody MessageRequest request){
+    Map<String,Object> autoReply(@RequestBody MessageRequest request) throws Exception {
         logger.info("/api/autoReply post request, request: {}",request.toString());
+
+
+        Map<String,Object> uploadResult = WeixinUtils.uploadFile("image");
+        logger.info("uploadResult"+uploadResult.get("responseCode"));
+        logger.info("uploadResult"+uploadResult.get("responseBody"));
+
         Map<String, Object> replyMessage = new HashMap();
         replyMessage.put("ToUserName",request.getFromUserName());
         replyMessage.put("FromUserName",request.getToUserName());
