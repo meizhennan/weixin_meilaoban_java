@@ -34,7 +34,7 @@ public class MessageController {
         replyMessage.put("CreateTime",System.currentTimeMillis()/1000);
         replyMessage.put("MsgType","text");
         replyMessage.put("Content","测试自动回复");
-
+        logger.info("返回的json:",replyMessage.toString());
         return replyMessage;
     }
 
