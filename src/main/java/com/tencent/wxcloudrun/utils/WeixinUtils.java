@@ -1,5 +1,6 @@
 package com.tencent.wxcloudrun.utils;
 
+import org.springframework.core.io.ClassPathResource;
 import org.springframework.util.ResourceUtils;
 
 import java.io.*;
@@ -14,9 +15,10 @@ import java.util.Scanner;
 public class WeixinUtils {
     public static Map<String,Object> uploadFile( String type) throws Exception {
 
-        File file = ResourceUtils.getFile("classpath:static/income_from_operation.png");
+        ClassPathResource classPathResource = new ClassPathResource("static/income_from_operation.png");
 
-//        File file = new File("path/to/your/file");
+        File file = classPathResource.getFile();
+
 
         // 指定上传的 URL
         URL url = new URL("http://api.weixin.qq.com/cgi-bin/media/upload?type=" + type);
